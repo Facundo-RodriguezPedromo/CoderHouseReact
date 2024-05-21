@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ItemCount from "./ItemCount";
 import {
   Grid,
@@ -9,11 +9,23 @@ import {
   Typography,
   CardMedia,
 } from "@mui/material";
-
 import { Link } from "react-router-dom";
 
-export default function Item({ item }) {
-  
+export default function Item({ item, onAdd }) {
+  const [count, setCount] = useState(1); // Inicializa el estado count
+
+  const increment = () => {
+    if (count < item.stock) {
+      setCount(count + 1);
+    }
+  };
+
+  const decrement = () => {
+    if (count > 1) {
+      setCount(count - 1);
+    }
+  };
+
   return (
     <Grid item xs={12} sm={6} md={4} lg={3}>
       <Card sx={{ maxWidth: 200, m: 1 }}>
@@ -37,13 +49,18 @@ export default function Item({ item }) {
             ${item.price}
           </Typography>
         </CardContent>
-        
+
         <CardActions>
+          <ItemCount
+            stock={item.stock}
+            count={count}
+            increment={increment}
+            decrement={decrement}
+          />
           <Button
             variant="contained"
             color="primary"
             onClick={() => onAdd(item.title, count)}
-            
             fullWidth
           >
             Add to cart

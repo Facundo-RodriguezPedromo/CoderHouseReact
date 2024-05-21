@@ -11,8 +11,13 @@ function CartWidget() {
   return (
     <Link to={"/cart"}>
       <div>
-        <CartIcon ancho={40} alto={40} />
-        <span>{calculateQuantity}</span>
+        <CartIcon />
+        <div>
+          <span style={{
+            textDecoration: "none",
+            padding: "0 16px",
+          }}>{calculateQuantity}</span>
+        </div>
       </div>
     </Link>
   );
