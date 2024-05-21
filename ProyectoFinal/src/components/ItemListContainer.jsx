@@ -1,9 +1,19 @@
-import React from 'react'
+import useProducts from "../hooks/useProducts";
+import ItemList from "./ItemList";
 
-export default function ItemListContainer() {
+import { useParams } from "react-router-dom";
+
+export default function ItemListContainer({ saludo }) {
+  const { categoryName } = useParams();
+  const { isLoading, products } = useProducts(categoryName);
+
+  if (isLoading) return <h1>Cargando Productos . . .</h1>;
+
   return (
-    <div>
-      
-    </div>
-  )
+    <>
+      <h2>{saludo}</h2>
+
+      <ItemList products={products} />
+    </>
+  );
 }
