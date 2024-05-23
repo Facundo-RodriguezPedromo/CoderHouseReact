@@ -27,7 +27,7 @@ export default function CategoryList() {
     <List style={{ display: "flex", flexDirection: "row", padding: 0 }}>
       {MIS_RUTAS.map((ruta) => (
         <NavLink
-          key={ruta.path}  // Aquí se coloca la key
+          key={ruta.path}  
           style={{
             textDecoration: "none",
             padding: "0 16px",

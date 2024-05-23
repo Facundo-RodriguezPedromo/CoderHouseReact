@@ -17,7 +17,7 @@ const products = [
     image: "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
     stock: 24,
   },
-  {
+  /*{
     id: 3,
     title: "Mens Cotton Jacket",
     price: 55.99,
@@ -34,7 +34,7 @@ const products = [
     category: "mens-clothing",
     image: "https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg",
     stock: 2,
-  },
+  },*/
   {
     id: 5,
     title: "John Hardy Women's Legends Naga Gold & Silver Dragon Station Chain Bracelet",
@@ -52,7 +52,7 @@ const products = [
     category: "jewelery",
     image: "https://fakestoreapi.com/img/61sbMiUnoGL._AC_UL640_QL65_ML3_.jpg",
     stock: 32,
-  },
+  },/*
   {
     id: 7,
     title: "White Gold Plated Princess",
@@ -70,7 +70,7 @@ const products = [
     category: "jewelery",
     image: "https://fakestoreapi.com/img/51UDEzMJVpL._AC_UL640_QL65_ML3_.jpg",
     stock: 4,
-  },
+  },*/
   {
     id: 9,
     title: "WD 2TB Elements Portable External Hard Drive - USB 3.0",
@@ -88,7 +88,7 @@ const products = [
     category: "electronics",
     image: "https://fakestoreapi.com/img/61U7T1koQqL._AC_SX679_.jpg",
     stock: 74,
-  },
+  },/*
   {
     id: 11,
     title: "Silicon Power 256GB SSD 3D NAND A55 SLC Cache Performance Boost SATA III 2.5",
@@ -124,12 +124,12 @@ const products = [
     category: "electronics",
     image: "https://fakestoreapi.com/img/81Zt42ioCgL._AC_SX679_.jpg",
     stock: 2,
-  },
+  },*/
   {
     id: 15,
     title: "BIYLACLESEN Women's 3-in-1 Snowboard Jacket Winter Coats",
     price: 56.99,
-    description: "Note: The Jackets is US standard size, Please choose size as your usual wear Material: 100% Polyester; Detachable Liner Fabric: Warm Fleece. Detachable Functional Liner: Skin Friendly, Lightweight and Warm. Stand Collar Liner jacket, keep you warm in cold weather. Zippered Pockets: 2 Zippered Hand Pockets, 2 Zippered Pockets on Chest (enough to keep cards or keys) and 1 Hidden Pocket Inside. Zippered Hand Pockets and Hidden Pocket keep your things secure. Humanized Design: Adjustable and Detachable Hood and Adjustable cuff to prevent the wind and water, for a comfortable fit. 3 in 1 Detachable Design provide more convenience, you can separate the coat and inner as needed, or wear it together. It is suitable for different season and help you adapt to different climates.",
+    description: "Note: The Jackets is US standard size",
     category: "womens-clothing",
     image: "https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_.jpg",
     stock: 9,
@@ -138,11 +138,11 @@ const products = [
     id: 16,
     title: "Lock and Love Women's Removable Hooded Faux Leather Moto Biker Jacket",
     price: 29.95,
-    description: "100% POLYURETHANE (shell) 100% POLYESTER (lining) 75% POLYESTER 25% COTTON (SWEATER), Faux leather material for style and comfort. 2 pockets of front, 2-for-One Hooded denim style faux leather jacket, Button detail on waist, Detail stitching at sides. HAND WASH ONLY. DO NOT BLEACH. LINE DRY. DO NOT IRON.",
+    description: "100% POLYURETHANE (shell) 100% POLYESTER (lining) ",
     category: "womens-clothing",
     image: "https://fakestoreapi.com/img/81XH0e8fefL._AC_UY879_.jpg",
     stock: 7,
-  },
+  },/*
   {
     id: 17,
     title: "Rain Jacket Women Windbreaker Striped Climbing Raincoats",
@@ -178,7 +178,7 @@ const products = [
     category: "womens-clothing",
     image: "https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg",
     stock: 4,
-  },
+  },*/
 ];
 
 export const getProducts = () => {
@@ -192,12 +192,10 @@ export const getProducts = () => {
 export const getProductById = (id) => {
   return new Promise((resolve) => {
     setTimeout(() => {
-      resolve(products.find((product) => product.id === id));
+      resolve(products.find((product) => product.id === parseInt(id, 10))); // Convertir id a número
     }, 500);
-    
-  })
-  
-}
+  });
+};
 
 export const getProductsByCategory = (category) => {
   return new Promise((resolve) => {

@@ -26,8 +26,8 @@ export default function Brand() {
             }}
           >
             Tienda Filip Store
-            <img src={FilipStore} alt="" style={imageStyle} />
           </h1>
+          <img src={FilipStore} alt="" style={imageStyle} />
         </Link>
       </div>
     </>

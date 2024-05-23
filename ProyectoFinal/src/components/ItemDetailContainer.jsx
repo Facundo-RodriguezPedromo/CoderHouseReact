@@ -1,12 +1,10 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import ItemDetail from "./ItemDetail";
 import useProductById from "../hooks/useProductById";
+import ItemDetail from "./ItemDetail";
 
 export default function ItemDetailContainer() {
-  const params = useParams();
-
-  const { productId } = params;
+  const { productId } = useParams();
   const { loading, product } = useProductById(productId);
 
   if (loading) {
@@ -15,6 +13,7 @@ export default function ItemDetailContainer() {
 
   return (
     <>
+      <h1>Detalle del producto</h1>
       <ItemDetail item={product} />
     </>
   );
