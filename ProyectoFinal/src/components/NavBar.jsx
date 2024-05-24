@@ -10,7 +10,6 @@ import CartContext from "../contexts/CartContext";
 
 export default function NavBar() {
   const { cart } = useContext(CartContext);
-  const calculateQuantity = cart.reduce((acc, item) => acc + item.quantity, 0);
 
   return (
     <>

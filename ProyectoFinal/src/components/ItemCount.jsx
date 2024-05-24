@@ -20,6 +20,7 @@ const CountDisplay = styled(Typography)(({ theme }) => ({
   textAlign: 'center',
   fontSize: '1.2rem',
   fontWeight: 'bold',
+  color: "red"
 }));
 
 export default function ItemCount({ stock, count, increment, decrement }) {

@@ -1,25 +1,31 @@
+import React, { useContext } from "react";
 import CartContext from "../contexts/CartContext";
 import CartItem from "./CartItem";
-
-import { useContext } from "react";
+import { Box, Button, Typography, Container } from "@mui/material";
 
 export default function CartContainer() {
   const { cart, clearCart, cartTotal } = useContext(CartContext);
 
   return (
-    <div>
-      <h2>Mi Carrito</h2>
-      <div>
+    <Container>
+      <Typography variant="h2" component="h2" gutterBottom>
+        Mis articulos:
+      </Typography>
+      <Box>
         {cart.length === 0 ? (
-          <h1>No hay productos en el carrito</h1>
+          <Typography variant="h5" component="h1" color="textSecondary">
+            Carrito vacio
+          </Typography>
         ) : (
-          cart.map((item) => {
-            return <CartItem key={item.product.id} item={item} />;
-          })
+          cart.map((item) => <CartItem key={item.product.id} item={item} />)
         )}
-      </div>
-      <h3>Total: ${cartTotal}</h3>
-      <button onClick={clearCart}>Limpiar carrito</button>
-    </div>
+      </Box>
+      <Typography variant="h4" component="h3" gutterBottom>
+        Total: ${cartTotal}
+      </Typography>
+      <Button variant="contained" color="primary" onClick={clearCart}>
+        Vaciar carrito
+      </Button>
+    </Container>
   );
 }

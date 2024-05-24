@@ -21,10 +21,6 @@ export default function ItemDetail({ item }) {
     reset();
   };
 
-  if (!item) {
-    return <p>Loading...</p>; // Añadir verificación para item
-  }
-
   return (
     <Grid item xs={12} sm={6} md={4} lg={3}>
       <Card sx={{ maxWidth: 200, m: 1 }}>

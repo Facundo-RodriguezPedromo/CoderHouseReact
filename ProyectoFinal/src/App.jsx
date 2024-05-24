@@ -33,7 +33,6 @@ function App() {
               element={<ItemDetailContainer />}
             />
             <Route path="/cart" element={<CartContainer />} />
-            <Route path="/checkout" element={<h1>Proximamente . . .</h1>} />
           </Routes>
         </Layout>
       </CartProvider>

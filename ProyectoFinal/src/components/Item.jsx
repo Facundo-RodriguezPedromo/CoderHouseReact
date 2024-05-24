@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import ItemCount from "./ItemCount";
 import {
   Grid,
@@ -10,26 +10,22 @@ import {
   CardMedia,
 } from "@mui/material";
 import { Link } from "react-router-dom";
+import CartContext from "../contexts/CartContext";
+import useCount from "../hooks/useCount";
 
-export default function Item({ item, onAdd }) {
-  const [count, setCount] = useState(1);
+export default function Item({ item }) {
+  const { count, increment, decrement, reset } = useCount(0);
+  const { addToCart } = useContext(CartContext);
 
-  const increment = () => {
-    if (count < item.stock) {
-      setCount(count + 1);
-    }
-  };
-
-  const decrement = () => {
-    if (count > 1) {
-      setCount(count - 1);
-    }
+  const handleAddToCart = () => {
+    addToCart(item, count);
+    reset();
   };
 
   return (
     <Grid item xs={6} sm={4} md={3} lg={2}>
       <Card sx={{ maxWidth: 220, m: 1 }}>
-      <Link to={`/product/${item.id}`}>
+        <Link to={`/product/${item.id}`}>
           <CardMedia
             component="img"
             image={item.image}
@@ -37,21 +33,16 @@ export default function Item({ item, onAdd }) {
             sx={{ height: "auto" }}
           />
         </Link>
-
         <CardContent>
           <Link to={`/product/${item.id}`} style={{ textDecoration: "none" }}>
             <Typography gutterBottom variant="h6" component="h2">
               {item.title}
             </Typography>
           </Link>
-          <Typography variant="body2" color="text.secondary">
-            {item.description}
-          </Typography>
           <Typography variant="h6" color="text.primary">
             ${item.price}
           </Typography>
         </CardContent>
-
         <CardActions
           sx={{
             display: "flex",
@@ -68,7 +59,7 @@ export default function Item({ item, onAdd }) {
           <Button
             variant="contained"
             color="primary"
-            onClick={() => onAdd(item, count)}
+            onClick={handleAddToCart}
             fullWidth
             sx={{ mt: 1 }}
           >

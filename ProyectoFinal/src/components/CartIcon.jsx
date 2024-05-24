@@ -7,7 +7,7 @@ export default function CartIcon() {
   return (
     <>
       <IconButton edge="end" color="inherit" aria-label="shopping cart">
-        <FaShoppingCart size={30} color="blue" />
+        <FaShoppingCart size={30} color="white" />
       </IconButton>
     </>
   );
