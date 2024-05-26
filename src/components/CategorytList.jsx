@@ -27,12 +27,11 @@ export default function CategoryList() {
     <List style={{ display: "flex", flexDirection: "row", padding: 0 }}>
       {MIS_RUTAS.map((ruta) => (
         <NavLink
-          key={ruta.path}  
+          key={ruta.path}
           style={{
             textDecoration: "none",
             padding: "0 16px",
           }}
-          className={({ isActive }) => (isActive ? "active-link" : "")}
           to={ruta.path}
         >
           <IconButton color="inherit">
