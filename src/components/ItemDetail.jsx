@@ -60,9 +60,9 @@ export default function ItemDetail({ item }) {
             Add to cart
           </Button>
         </CardActions>
-        <p>
-          Quedan <strong>{item.stock - count}</strong> unidades disponibles
-        </p>
+        <Typography variant="h6" color="text.primary">
+          Quedan {item.stock - count} unidades disponibles
+        </Typography>
       </Card>
     </Grid>
   );

@@ -1,21 +1,32 @@
 import { useEffect, useState } from "react";
-import { getProducts, getProductsByCategory } from "../mock";
+import {
+  collection,
+  getDocs,
+  getFirestore,
+  query,
+  where,
+} from "firebase/firestore";
 
 export default function useProducts(categoryName) {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    setIsLoading(true);
-    if (categoryName) {
-      getProductsByCategory(categoryName)
-        .then((data) => setProducts(data))
-        .finally(() => setIsLoading(false));
-    } else {
-      getProducts()
-        .then((data) => setProducts(data))
-        .finally(() => setIsLoading(false));
-    }
+    const db = getFirestore();
+    const productsCollection = collection(db, "products");
+    const cN = categoryName
+      ? query(productsCollection, where("category", "==", categoryName))
+      : productsCollection;
+
+    getDocs(cN)
+      .then((snapshot) => {
+        setProducts(
+          snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
+        );
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   }, [categoryName]);
 
   return { products, isLoading };
