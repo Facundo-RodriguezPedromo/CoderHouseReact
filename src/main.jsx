@@ -1,7 +1,6 @@
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 
-
 import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {
@@ -10,10 +9,9 @@ const firebaseConfig = {
   projectId: "react-coderhousefr",
   storageBucket: "react-coderhousefr.appspot.com",
   messagingSenderId: "183874084498",
-  appId: "1:183874084498:web:6f47aa64d7f38bf909104b"
+  appId: "1:183874084498:web:6f47aa64d7f38bf909104b",
 };
 
-// Initialize Firebase
 initializeApp(firebaseConfig);
 
 ReactDOM.createRoot(document.getElementById("root")).render(<App />);

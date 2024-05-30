@@ -34,7 +34,7 @@ export default function Brand() {
       <Link to={"./"}>
         <Button sx={buttonStyle}>
           <img src={FilipStore} alt="FilipStore Logo" style={imageStyle} />
-          <Typography>OFERTAS</Typography>
+          <Typography>OFFERS</Typography>
         </Button>
       </Link>
     </Box>

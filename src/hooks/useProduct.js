@@ -1,6 +1,6 @@
 import { doc, getDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import { db } from "../hooks/firebase"; 
+import { db } from "../hooks/firebase";
 
 export default function useProduct(productId) {
   const [product, setProduct] = useState(null);
@@ -15,7 +15,7 @@ export default function useProduct(productId) {
         if (snapshot.exists()) {
           const productData = { ...snapshot.data(), id: snapshot.id };
           setProduct(productData);
-          console.log("Producto obtenido:", productData);  
+          console.log("Producto obtenido:", productData);
         } else {
           console.log("No se encontró el documento con el ID:", productId);
         }
