@@ -9,7 +9,7 @@ export default function useProduct(productId) {
   useEffect(() => {
     if (!productId) return;
 
-    const docRef = doc(db, "item", productId);
+    const docRef = doc(db, "products", productId);
     getDoc(docRef)
       .then((snapshot) => {
         if (snapshot.exists()) {

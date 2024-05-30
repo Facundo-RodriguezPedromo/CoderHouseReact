@@ -5,9 +5,8 @@ import ItemDetail from "./ItemDetail";
 
 export default function ItemDetailContainer() {
   const { productId } = useParams();
-  const { loading, product } = useProduct(productId);
-
-  if (loading) return <h1>Cargando detalle del producto...</h1>;
+  console.log("Product ID:", productId);
+  const { product } = useProduct(productId);
 
   return (
     <>
