@@ -1,27 +1,32 @@
+import { doc, getDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import { doc, getDoc, getFirestore } from "firebase/firestore";
+import { db } from "../hooks/firebase"; 
 
-export default function useProduct(id) {
-  const [product, setProduct] = useState({});
-  const [isLoading, setIsLoading] = useState(true);
+export default function useProduct(productId) {
+  const [product, setProduct] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const db = getFirestore();
+    if (!productId) return;
 
-    const product = doc(db, "products", id);
-
-    getDoc(product)
+    const docRef = doc(db, "item", productId);
+    getDoc(docRef)
       .then((snapshot) => {
         if (snapshot.exists()) {
-          setProduct({ id: snapshot.id, ...snapshot.data() });
+          const productData = { ...snapshot.data(), id: snapshot.id };
+          setProduct(productData);
+          console.log("Producto obtenido:", productData);  
         } else {
-          console.log("No podemos encontrar el producto");
+          console.log("No se encontró el documento con el ID:", productId);
         }
       })
+      .catch((error) => {
+        console.error("Error al obtener el documento:", error);
+      })
       .finally(() => {
-        setIsLoading(false);
+        setLoading(false);
       });
-  }, [id]);
+  }, [productId]);
 
-  return { product, isLoading };
+  return { product, loading };
 }

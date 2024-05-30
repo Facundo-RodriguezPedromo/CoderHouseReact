@@ -21,6 +21,10 @@ export default function ItemDetail({ item }) {
     reset();
   };
 
+  if (!item) {
+    return <p>Producto no disponible</p>;
+  }
+
   return (
     <Grid item xs={12} sm={6} md={4} lg={3}>
       <Card sx={{ maxWidth: 200, m: 1 }}>
@@ -57,7 +61,7 @@ export default function ItemDetail({ item }) {
             disabled={count === 0}
             fullWidth
           >
-            Add to cart
+            Añadir al carrito
           </Button>
         </CardActions>
         <Typography variant="h6" color="text.primary">
