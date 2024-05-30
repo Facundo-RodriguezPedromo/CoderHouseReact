@@ -3,13 +3,14 @@ import App from "./App.jsx";
 
 import { initializeApp } from "firebase/app";
 
+
 const firebaseConfig = {
-  apiKey: "AIzaSyCmy-lbVXYQhJ_Mo82NOoNZPv8S5GOMsns",
-  authDomain: "react-coderhousefr.firebaseapp.com",
-  projectId: "react-coderhousefr",
-  storageBucket: "react-coderhousefr.appspot.com",
-  messagingSenderId: "183874084498",
-  appId: "1:183874084498:web:6f47aa64d7f38bf909104b",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY ,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
 initializeApp(firebaseConfig);
