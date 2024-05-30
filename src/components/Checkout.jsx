@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import { db } from '../hooks/firebase';
-import { Button, TextField, Grid, Typography } from '@mui/material';
+import React, { useState } from "react";
+import { db, collection, addDoc } from "../hooks/firebase"; 
+import { Button, TextField, Grid, Typography } from "@mui/material";
 
 const Checkout = ({ cartItems }) => {
-  const [name, setName] = useState('');
-  const [address, setAddress] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
+  const [name, setName] = useState("");
+  const [address, setAddress] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,11 +21,10 @@ const Checkout = ({ cartItems }) => {
     };
 
     try {
-      await db.collection('orders').add(orderData);
-      alert('¡Pedido realizado con éxito!');
-      
+      await addDoc(collection(db, "orders"), orderData); 
+      alert("¡Pedido realizado con éxito!");
     } catch (error) {
-      console.error('Error', error);
+      console.error("Error", error);
     }
   };
 
